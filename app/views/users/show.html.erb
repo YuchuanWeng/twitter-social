@@ -1,0 +1,17 @@
+<h3><%= link_to "@#{@user.username}", user_path(@user.username) %></h3>
+
+<% if logged_in? %>
+  <% if !current_user.following_users.include?(@user) %>
+   <%= link_to '+ follow', follow_user_path(@user), method: 'post' %>
+  <% else %>
+   <%= link_to '- unfollow', unfollow_user_path(@user), method: 'post' %>
+  <% end %>
+<% end %>
+
+<p>
+  <ul>
+   <% @user.statuses.each do |status| %>
+   <li><%= status.body %> on <%= status.created_at %></li>
+   <% end %>
+  </ul>
+</p>

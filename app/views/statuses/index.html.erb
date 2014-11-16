@@ -1,0 +1,8 @@
+<%= render 'shared/header', header: "Recent Statuses" %>
+
+<ul>
+  <% @statuses.each do |status| %>
+    <li><%= status.body %> created_by <%= status.creator.username %></li>
+  <% end %>
+
+</ul>
